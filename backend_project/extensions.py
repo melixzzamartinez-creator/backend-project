@@ -1,2 +1,5 @@
-from flask import Flask
-from backend_project.extensions import db, migrate
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+db = SQLAlchemy()
+migrate = Migrate()
