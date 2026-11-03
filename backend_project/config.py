@@ -6,21 +6,22 @@ load_dotenv()
 
 class Config:
     JWT_SECRET = os.getenv("JWT_SECRET")
+    JWT_LIFETIME_SECONDS = 60
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    pass
+    
 
 class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "sqlite:///dev.db")
     DEBUG = True
-    pass
+    
 
 class TestingConfig(Config):
     TESTING = True
-    pass
+    
 
 class ProductionConfig(Config):
     DEBUG = False
-    pass
+    
 
 
 config_dict = {

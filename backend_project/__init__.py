@@ -11,11 +11,12 @@ def create_app(config_name):
     config_class = config_dict[config_name]
     app.config.from_object(config_class)
 
-    print("JWT_SECRET from config:", app.config.get("JWT_SECRET"))
-    print("DB URI from config:", app.config.get("SQLALCHEMY_DATABASE_URI"))
     
     db.init_app(app)
-    migrate.init_app(app)
+    migrate.init_app(app, db)
     app.register_blueprint(your_bp_variable)
 
+    from backend_project import models  # ensure models (including User) are registered
+
     return app
+
