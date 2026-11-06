@@ -10,4 +10,4 @@ COPY . .
 
 ENV PORT=8000
 
-CMD ["sh", "-c", "gunicorn -b 0.0.0.0:$PORT 'backend_project:create_app(\"development\")'"]
+CMD ["sh", "-c", "gunicorn -b 0.0.0.0:$PORT 'backend_project:create_app(\"production\")'"]
